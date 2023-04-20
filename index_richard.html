@@ -2,203 +2,69 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Pop-up Video Player</title>
-
-  <style>
-    /* Style for thumbnail video and image */
-    .thumbnail {
-      cursor: pointer;
-      max-width: 100%;
-      position: relative;
-    }
-
-    .thumbnail-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: none;
-    }
-
-    .preview-container {
-      position: relative;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .preview-video {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* Style for overlay */
-    .overlay {
-      position: fixed;
-      z-index: 999;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.7);
-      display: none;
-      justify-content: center;
-      align-items: center;
-    }
-
-    /* Style for video player */
-    .video-player {
-      position: relative;
-      width: 80%;
-      height: 80%;
-      max-width: 800px;
-      max-height: 600px;
-    }
-
-    .video-player video {
-      width: 100%;
-      height: 100%;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 24px;
-      color: white;
-      cursor: pointer;
-    }
-
-    /* Style for grid */
-    .grid {
-      display: grid;
-      grid-auto-rows: minmax(200px, auto);
-      grid-gap: 0px;
-    }
-
-    /* For screens with a maximum width of 700px */
-    @media (max-width: 900px) {
-      .grid {
-        grid-template-columns: repeat(1, 1fr);
-        /* Set grid to 1 column */
-      }
-    }
-
-    /* For screens with a minimum width of 700px and up to 1218px */
-    @media (min-width: 900px) and (max-width: 1218px) {
-      .grid {
-        grid-template-columns: repeat(2, 1fr);
-        /* Set grid to 2 columns */
-      }
-    }
-
-    /* For screens with a minimum width of 1218px */
-    @media (min-width: 1218px) {
-      .grid {
-        grid-template-columns: repeat(3, 1fr);
-        /* Set grid to 3 columns */
-      }
-    }
-
-      /* For screens with a minimum width of 1418px */
-      @media (min-width: 1418px) {
-        .grid {
-          grid-template-columns: repeat(4, 1fr);
-          /* Set grid to 3 columns */
-        }
-      }
-
-    .grid-item {
-      max-width: 100%;
-      height: auto;
-      box-sizing: border-box;
-      display: flex;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ellie walker - moving image</title>
+    <link rel="stylesheet" href="style_richard.css">
 </head>
 
 <body>
-  <div class="container">
-    <div class="grid">
-      <div class="grid-item">
-        <video class="thumbnail" src="video2.mp4" alt="Video Thumbnail" muted loop></video>
-        <div class="overlay">
-          <div class="video-player">
-            <video src="/video1.mp4"></video>
-            <span class="close-btn">&times;</span>
-          </div>
-        </div>
-      </div>
-      <div class="grid-item">
-        <video class="thumbnail" src="video2.mp4" alt="Video Thumbnail" muted loop></video>
-        <div class="overlay">
-          <div class="video-player">
-            <video src="/video1.mp4" controls></video>
-            <span class="close-btn">&times;</span>
-          </div>
-        </div>
-      </div>
-      <div class="grid-item">
-        <video class="thumbnail" src="video2.mp4" alt="Video Thumbnail" muted loop></video>
-        <div class="overlay">
-          <div class="video-player">
-            <video src="/video1.mp4" controls></video>
-            <span class="close-btn">&times;</span>
-          </div>
-        </div>
-      </div>
-      <div class="grid-item">
-        <video class="thumbnail" src="video2.mp4" alt="Video Thumbnail" muted loop></video>
-        <div class="overlay">
-          <div class="video-player">
-            <video src="/video1.mp4" controls></video>
-            <span class="close-btn">&times;</span>
-          </div>
-        </div>
-      </div>
+
+    <!-- THUMBNAILS  -->
+
+    <div class="thumbnails">
+
+        <!-- ADD NEW VIDEOS HERE - AND AGAIN AT LINE 50... -->
+
+        <video class="thumbnail" src="vids/vid1.mp4" alt="Video Thumbnail" muted loop></video>
+        <video class="thumbnail" src="vids/vid2.mp4" alt="Video Thumbnail" muted loop></video>
+        <video class="thumbnail" src="vids/vid3.mp4" alt="Video Thumbnail" muted loop></video>
+        <video class="thumbnail" src="vids/vid4.mp4" alt="Video Thumbnail" muted loop></video>
     </div>
 
-    <script>
-      const thumbnails = document.querySelectorAll('.thumbnail');
-      const overlays = document.querySelectorAll('.overlay');
-      const videoPlayers = document.querySelectorAll('.video-player video');
-      const closeBtns = document.querySelectorAll('.close-btn');
-      const imageDivs = document.querySelectorAll('.image-div');
+    <!-- MODAL POP-UP -->
 
-      thumbnails.forEach((thumbnail, index) => {
-        thumbnail.addEventListener('click', () => {
-          overlays[index].style.display = 'flex';
-          videoPlayers[index].play();
-        });
+    <div class="modal">
 
-        thumbnail.addEventListener('mouseover', () => {
-          thumbnail.play();
-          imageDivs[index].style.display = 'none';
-        });
+        <div class="btn close">
+            <svg width="55" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"
+                    d="M17.25 6.75L6.75 17.25" />
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"
+                    d="M6.75 6.75L17.25 17.25" />
+            </svg>
+        </div>
 
-        thumbnail.addEventListener('mouseout', () => {
-          if (!thumbnail.paused) {
-            thumbnail.pause();
-          }
-          thumbnail.currentTime = 0;
-          imageDivs[index].style.display = 'flex';
-        });
-      });
+        <div class="modal-content">
 
-      closeBtns.forEach((closeBtn, index) => {
-        closeBtn.addEventListener('click', () => {
-          overlays[index].style.display = 'none';
-          videoPlayers[index].pause();
-          videoPlayers[index].currentTime = 0;
-        });
-      });
-    
-    </script>
+            <div class="carousel">
+                <div class="btn prev">
+                    <svg width="90" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"
+                            d="M13.25 8.75L9.75 12L13.25 15.25" />
+                    </svg>
+                </div>
+
+                <!-- ...ADD NEW VIDEOS HERE AT LINE 50 AS WELL -->
+
+                <div class="slides">
+                    <video src="vids/vid1.mp4" controls class="slide"></video>
+                    <video src="vids/vid2.mp4" controls class="slide"></video>
+                    <video src="vids/vid3.mp4" controls class="slide"></video>
+                    <video src="vids/vid4.mp4" controls class="slide"></video>
+                </div>
+
+                <div class="btn next">
+                    <svg width="90" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"
+                            d="M10.75 8.75L14.25 12L10.75 15.25" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="main_richard.js"></script>
+
+</html>
